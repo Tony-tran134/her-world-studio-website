@@ -153,7 +153,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-red-600 text-white py-20 md:py-32 relative overflow-hidden">
+      <section className="text-white py-20 md:py-32 relative overflow-hidden" style={{backgroundColor: '#640606'}}>
         <div className="absolute top-0 right-0 w-96 h-96 bg-red-700 rounded-full -mr-48 -mt-48 opacity-50" />
         <div className="container grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
@@ -183,7 +183,7 @@ export default function Home() {
             </Button>
             </div>
           </div>
-          <div className="relative h-96 md:h-full rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden shadow-2xl mx-auto">
             <img
               src="https://cdn.bokadirekt.se/ucdn/895cb9c7-271e-4497-84a4-ead6a7949770/-/quality/better/-/preview/275x275/"
               alt="Her World Studio - Lyxig skönhetsvård"
@@ -226,7 +226,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, idx) => (
               <Card key={idx} className="overflow-hidden hover:shadow-xl transition border-2 border-gray-200 hover:border-red-600">
-                <div className="bg-red-600 text-white p-6">
+                <div className="text-white p-6" style={{backgroundColor: '#640606'}}>
                   <div className="flex items-center gap-4">
                     <span className="text-4xl">{service.icon}</span>
                     <div>
