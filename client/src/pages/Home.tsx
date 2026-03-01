@@ -151,7 +151,7 @@ export default function Home() {
       {/* Why Choose Us */}
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Varför Välja Her World Studio?</h2>
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Varför välja Her World Studio?</h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -173,7 +173,7 @@ export default function Home() {
       <section id="services" className="py-20 md:py-32 bg-white">
         <div className="container">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">Våra Tjänster</h2>
-          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
+          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" style={{opacity: '4.7'}} />
           <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
             Upptäck vårt kompletta utbud av professionell nagel- och skönhetsvård, varje behandling utförd med precision och omsorg.
           </p>
@@ -218,7 +218,7 @@ export default function Home() {
       {/* Testimonials */}
       <section className="py-20 md:py-32 bg-gray-50">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Vad Våra Klienter Säger</h2>
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Betyg</h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, idx) => (
@@ -338,7 +338,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container text-center">
-          <p className="mb-2 font-medium">© 2026 Her World Studio. Alla rättigheter förbehållna.</p>
+          <p className="mb-2 font-medium">© 2025 Her World Studio. Alla rättigheter förbehållna.</p>
           <p className="text-gray-400">
             Närlundavägen 8J, 252 75 Helsingborg, Sverige | 073-464-3339
           </p>
