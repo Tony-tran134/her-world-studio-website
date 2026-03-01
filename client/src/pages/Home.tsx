@@ -1,18 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ChevronRight, MapPin, Phone, Mail, Star } from "lucide-react";
+import { ChevronRight, MapPin, Phone, Mail, Star, Calendar } from "lucide-react";
 import { useState } from "react";
 
 /**
- * Her World Studio - Modern Elegance with Gradient Depth
- * Design Philosophy: Soft gradients, glassmorphic cards, sophisticated animations
- * Color Palette: White → pale rose gradient, soft lavender/blush accents, deep rose CTAs
- * Typography: Poppins throughout for consistency and modern feel
+ * Her World Studio - Women Empowerment Design
+ * Bold red (#d32f2f), white, and black color scheme
+ * Swedish language, prominent booking features
+ * Animations suitable for all ages
  */
 
 export default function Home() {
   const [bookingEmail, setBookingEmail] = useState("");
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
+  const [selectedService, setSelectedService] = useState<string | null>(null);
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,60 +28,64 @@ export default function Home() {
 
   const services = [
     {
-      category: "Gel Nails",
+      category: "Gelnaglar",
       items: [
-        { name: "Gel Nyttset Natural", price: "400 kr", time: "60 min" },
-        { name: "Gel Nyttset Färg/French Tip", price: "450 kr", time: "70 min" },
-        { name: "Gel Nyttset Chrome/Glitter", price: "500 kr", time: "70 min" },
-        { name: "Avancerad Nail Design", price: "550 kr", time: "90 min" },
+        { name: "Gelnaglar Naturlig", price: "400 kr", time: "60 min" },
+        { name: "Gelnaglar Färg/Fransk", price: "450 kr", time: "70 min" },
+        { name: "Gelnaglar Chrome/Glitter", price: "500 kr", time: "70 min" },
+        { name: "Avancerad Nageldesign", price: "550 kr", time: "90 min" },
       ],
-      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-nail-art-ao2ZnDUY7Na4jcBeUFjcmb.webp",
+      description: "Glansiga, hållbara gelnaglar som håller i veckor",
+      icon: "💅",
     },
     {
-      category: "Acrylic Nails",
+      category: "Akrylnaglar",
       items: [
-        { name: "Akryl Nyttset Natural", price: "450 kr", time: "60 min" },
-        { name: "Akryl Nyttset Färg/French Tip", price: "500 kr", time: "70 min" },
-        { name: "Akryl Nyttset Chrome", price: "550 kr", time: "70 min" },
-        { name: "Avancerad Nail Design", price: "650 kr", time: "110 min" },
+        { name: "Akrylnaglar Naturlig", price: "450 kr", time: "60 min" },
+        { name: "Akrylnaglar Färg/Fransk", price: "500 kr", time: "70 min" },
+        { name: "Akrylnaglar Chrome", price: "550 kr", time: "70 min" },
+        { name: "Avancerad Nageldesign", price: "650 kr", time: "110 min" },
       ],
-      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-nail-art-ao2ZnDUY7Na4jcBeUFjcmb.webp",
+      description: "Starka och slitstarka akrylnaglar för långvarigt resultat",
+      icon: "✨",
     },
     {
-      category: "Lash Extensions",
+      category: "Fransar & Bryn",
       items: [
-        { name: "Classic Fransar (Lilly Nails)", price: "550 kr", time: "75 min" },
-        { name: "Mix Fransar (Lilly Nails)", price: "650 kr", time: "85 min" },
+        { name: "Klassiska Fransar", price: "550 kr", time: "75 min" },
+        { name: "Mix Fransar", price: "650 kr", time: "85 min" },
         { name: "Lash Lift & Färgning", price: "595 kr", time: "50 min" },
-        { name: "Lash + Brow Lift & Färgning", price: "995 kr", time: "60 min" },
+        { name: "Lash + Brow Lift", price: "995 kr", time: "60 min" },
       ],
-      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/service-lash-extensions-dkL8V6tsdsdy5RzBkkQrUd.webp",
+      description: "Vackra fransar och välformade bryn som framhäver dina ögon",
+      icon: "👁️",
     },
     {
-      category: "Pedicure",
+      category: "Pedikyr",
       items: [
-        { name: "Zen Pedicure (utan färg)", price: "400 kr", time: "50 min" },
-        { name: "Lyx Pedicure (med färg)", price: "450 kr", time: "60 min" },
-        { name: "Shellac/Gellack på tårnaglar", price: "300 kr", time: "30 min" },
+        { name: "Zen Pedikyr (utan färg)", price: "400 kr", time: "50 min" },
+        { name: "Lyx Pedikyr (med färg)", price: "450 kr", time: "60 min" },
+        { name: "Shellac på tånaglar", price: "300 kr", time: "30 min" },
       ],
-      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/service-pedicure-XXtaUCYJ6fn4MRTKQcNNbF.webp",
+      description: "Välvårdade fötter som gör dig självsäker från tår till topp",
+      icon: "🦶",
     },
   ];
 
   const testimonials = [
     {
       name: "Emma",
-      text: "Absolutely stunning nails! The team is so professional and the salon is beautifully designed. I feel like I'm at a luxury spa.",
+      text: "Jag känner mig så självsäker efter att ha varit hos Her World Studio. Det är mer än bara skönhet, det är en upplevelse av att ta hand om mig själv.",
       rating: 5,
     },
     {
       name: "Sofia",
-      text: "Her World Studio is my go-to place. The lash extensions are incredible and the aftercare advice is so helpful.",
+      text: "Franstilläggen är fantastiska! Hela teamet är så professionellt och gör mig känna mig värderad. Jag rekommenderar det till alla mina vänner.",
       rating: 5,
     },
     {
       name: "Lisa",
-      text: "Best pedicure I've ever had! The attention to detail and the relaxing atmosphere make it worth every krona.",
+      text: "Bästa pedikyr jag någonsin haft. Miljön är så avslappnande och personalen bryr sig verkligen om detaljer. Helt värt det!",
       rating: 5,
     },
   ];
@@ -88,72 +93,76 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 glass border-b border-white/20">
+      <nav className="sticky top-0 z-50 bg-white border-b-4 border-red-600 shadow-md">
         <div className="container py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold text-foreground">
-            Her World <span className="text-primary">Studio</span>
+          <div className="text-2xl font-bold">
+            Her World <span className="text-red-600">Studio</span>
           </div>
           <div className="hidden md:flex gap-8 items-center">
-            <a href="#services" className="text-foreground hover:text-primary transition">
-              Services
+            <a href="#services" className="font-medium text-gray-800 hover:text-red-600 transition">
+              Tjänster
             </a>
-            <a href="#about" className="text-foreground hover:text-primary transition">
-              About
+            <a href="#about" className="font-medium text-gray-800 hover:text-red-600 transition">
+              Om Oss
             </a>
-            <a href="#contact" className="text-foreground hover:text-primary transition">
-              Contact
+            <a href="#contact" className="font-medium text-gray-800 hover:text-red-600 transition">
+              Kontakt
             </a>
-            <Button className="bg-primary hover:bg-primary/90 text-white">Book Now</Button>
+            <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2">
+              <Calendar className="w-4 h-4 mr-2" />
+              Boka Nu
+            </Button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        <div className="container grid md:grid-cols-2 gap-12 items-center">
+      <section className="bg-red-600 text-white py-20 md:py-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-red-700 rounded-full -mr-48 -mt-48 opacity-50" />
+        <div className="container grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              Your Time.<br />
-              <span className="text-primary">Your Space.</span><br />
-              Your Beauty.
+              Din Tid.<br />
+              Ditt Utrymme.<br />
+              Din Skönhet.
             </h1>
-            <p className="text-lg text-foreground/80 max-w-lg">
-              Experience luxury nail care and beauty treatments in our serene Helsingborg studio. From gel nails to lash extensions, we craft beauty with precision and care.
+            <p className="text-lg text-red-50 max-w-lg">
+              Upplev lyxig skönhetsvård i vår moderna studio i Helsingborg. Vi firar din styrka och självkänsla genom professionell skönhetsbehandling.
             </p>
             <div className="flex gap-4 pt-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                Book Appointment <ChevronRight className="ml-2 w-4 h-4" />
+              <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100 font-bold">
+                Boka Tid <ChevronRight className="ml-2 w-4 h-4" />
               </Button>
-              <Button size="lg" variant="outline" className="border-primary/30 hover:bg-white/50">
-                View Services
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-red-700 font-bold">
+                Se Tjänster
               </Button>
             </div>
           </div>
-          <div className="relative h-96 md:h-full rounded-2xl overflow-hidden glass shadow-2xl">
+          <div className="relative h-96 md:h-full rounded-lg overflow-hidden shadow-2xl">
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-nail-art-ao2ZnDUY7Na4jcBeUFjcmb.webp"
-              alt="Luxury nail art"
+              alt="Lyxiga naglar"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-white/30 backdrop-blur-sm">
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-12">Why Choose Her World Studio</h2>
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Varför Välja Her World Studio?</h2>
+          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "✨", title: "Expert Technicians", desc: "Over 8 years of experience in nail and beauty care" },
-              { icon: "🏥", title: "Medical-Grade Sanitation", desc: "Highest hygiene standards for your safety" },
-              { icon: "🎨", title: "100+ Design Options", desc: "Endless creative possibilities for your nails" },
+              { icon: "👩‍💼", title: "Erfarna Tekniker", desc: "Över 8 års erfarenhet av nagel- och skönhetsvård" },
+              { icon: "🏥", title: "Medicinsk Sanitet", desc: "Högsta hygienstandarder för din säkerhet" },
+              { icon: "🎨", title: "100+ Designalternativ", desc: "Oändliga möjligheter för dina naglar" },
             ].map((item, i) => (
-              <Card key={i} className="glass p-8 text-center hover:shadow-lg transition">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-foreground/70">{item.desc}</p>
+              <Card key={i} className="p-8 text-center hover:shadow-lg transition hover:border-red-600">
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
               </Card>
             ))}
           </div>
@@ -161,38 +170,43 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 md:py-32">
+      <section id="services" className="py-20 md:py-32 bg-white">
         <div className="container">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Our Services</h2>
-          <p className="text-center text-foreground/70 mb-16 max-w-2xl mx-auto">
-            Discover our full range of professional nail and beauty treatments, each crafted with precision and care.
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">Våra Tjänster</h2>
+          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
+          <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
+            Upptäck vårt kompletta utbud av professionell nagel- och skönhetsvård, varje behandling utförd med precision och omsorg.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, idx) => (
-              <Card key={idx} className="glass overflow-hidden hover:shadow-xl transition group">
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.category}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                  />
+              <Card key={idx} className="overflow-hidden hover:shadow-xl transition border-2 border-gray-200 hover:border-red-600">
+                <div className="bg-red-600 text-white p-6">
+                  <div className="flex items-center gap-4">
+                    <span className="text-4xl">{service.icon}</span>
+                    <div>
+                      <h3 className="text-2xl font-bold">{service.category}</h3>
+                      <p className="text-red-100 text-sm">{service.description}</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-primary">{service.category}</h3>
-                  <div className="space-y-3">
+                  <div className="space-y-3 mb-6">
                     {service.items.map((item, i) => (
-                      <div key={i} className="flex justify-between items-start pb-3 border-b border-white/20 last:border-0">
+                      <div key={i} className="flex justify-between items-start pb-3 border-b border-gray-200 last:border-0">
                         <div>
-                          <p className="font-medium text-foreground">{item.name}</p>
-                          <p className="text-sm text-foreground/60">{item.time}</p>
+                          <p className="font-semibold text-gray-900">{item.name}</p>
+                          <p className="text-sm text-gray-500">{item.time}</p>
                         </div>
-                        <p className="font-semibold text-primary">{item.price}</p>
+                        <p className="font-bold text-red-600">{item.price}</p>
                       </div>
                     ))}
                   </div>
-                  <Button className="w-full mt-6 bg-primary hover:bg-primary/90 text-white">
-                    Book This Service
+                  <Button
+                    onClick={() => setSelectedService(service.category)}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-bold"
+                  >
+                    Boka denna tjänst
                   </Button>
                 </div>
               </Card>
@@ -202,19 +216,20 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 md:py-32 bg-white/30 backdrop-blur-sm">
+      <section className="py-20 md:py-32 bg-gray-50">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-16">What Our Clients Say</h2>
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Vad Våra Klienter Säger</h2>
+          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, idx) => (
-              <Card key={idx} className="glass p-8 flex flex-col">
+              <Card key={idx} className="p-8 flex flex-col border-2 border-gray-200 hover:border-red-600 transition">
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                    <Star key={i} className="w-5 h-5 fill-red-600 text-red-600" />
                   ))}
                 </div>
-                <p className="text-foreground/80 mb-6 flex-grow italic">"{testimonial.text}"</p>
-                <p className="font-semibold text-foreground">— {testimonial.name}</p>
+                <p className="text-gray-700 mb-6 flex-grow italic">"{testimonial.text}"</p>
+                <p className="font-bold text-gray-900">— {testimonial.name}</p>
               </Card>
             ))}
           </div>
@@ -222,96 +237,98 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 md:py-32">
+      <section id="about" className="py-20 md:py-32 bg-white">
         <div className="container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-96 rounded-2xl overflow-hidden glass shadow-2xl">
+          <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-salon-interior-WEjYTdxAWJXNCWcHxpLYx2.webp"
-              alt="Her World Studio interior"
+              alt="Her World Studio interiör"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-4xl font-bold">About Her World Studio</h2>
-            <p className="text-lg text-foreground/80">
-              Founded with a passion for beauty and self-care, Her World Studio is a private, cozy, and modern sanctuary where you can relax and enjoy professional beauty treatments.
+            <h2 className="text-4xl font-bold text-gray-900">Om Her World Studio</h2>
+            <div className="w-12 h-1 bg-red-600" />
+            <p className="text-lg text-gray-700">
+              Her World Studio grundades med en passion för skönhet och självvård. Vi är en privat, mysig och modern studio där du kan koppla av och njuta av professionell skönhetsbehandling.
             </p>
-            <p className="text-lg text-foreground/80">
-              With over 8 years of experience in nail and beauty care, our certified technicians use only the highest-quality products and medical-grade sanitation standards to ensure your safety and satisfaction.
+            <p className="text-lg text-gray-700">
+              Med över 8 års erfarenhet inom nagel- och skönhetsvård använder våra certifierade tekniker endast högkvalitativa produkter och medicinsk sanitet för att säkerställa din säkerhet och tillfredsställelse.
             </p>
-            <p className="text-lg text-foreground/80">
-              We believe that beauty is personal, and every client deserves a tailored experience. Whether you're looking for a quick manicure or an elaborate nail art design, we're here to make you feel confident and beautiful.
+            <p className="text-lg text-gray-700">
+              Vi tror att skönhet är personligt, och varje klient förtjänar en skräddarsydd upplevelse. Oavsett om du letar efter en snabb manikyr eller en utarbetad nageldesign, är vi här för att göra dig självsäker och vacker.
             </p>
           </div>
         </div>
       </section>
 
       {/* Booking CTA */}
-      <section className="py-20 md:py-32 bg-gradient-to-r from-primary/10 to-accent/10">
+      <section className="py-20 md:py-32 bg-red-600 text-white">
         <div className="container max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Book?</h2>
-          <p className="text-lg text-foreground/80 mb-8">
-            Reserve your appointment now and experience luxury beauty care in Helsingborg.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Redo att Boka?</h2>
+          <p className="text-lg text-red-50 mb-8">
+            Reservera din tid nu och upplev lyxig skönhetsvård i Helsingborg.
           </p>
 
           {bookingSubmitted ? (
-            <div className="glass p-8 rounded-lg border border-primary/30 bg-primary/5">
-              <p className="text-lg font-semibold text-primary">✓ Thank you! We'll contact you shortly to confirm your booking.</p>
+            <div className="bg-white text-red-600 p-8 rounded-lg border-4 border-white">
+              <p className="text-lg font-bold">✓ Tack! Vi kontaktar dig snart för att bekräfta din bokning.</p>
             </div>
           ) : (
-            <form onSubmit={handleBookingSubmit} className="glass p-8 rounded-lg flex flex-col sm:flex-row gap-4">
+            <form onSubmit={handleBookingSubmit} className="bg-white text-gray-900 p-8 rounded-lg flex flex-col sm:flex-row gap-4">
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder="Din e-postadress"
                 value={bookingEmail}
                 onChange={(e) => setBookingEmail(e.target.value)}
-                className="flex-1 px-4 py-3 rounded-lg bg-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-red-600 font-medium"
                 required
               />
-              <Button type="submit" className="bg-primary hover:bg-primary/90 text-white px-8">
-                Book Now
+              <Button type="submit" className="bg-red-600 hover:bg-red-700 text-white px-8 font-bold">
+                Boka Nu
               </Button>
             </form>
           )}
 
-          <p className="text-sm text-foreground/60 mt-6">
-            Or call us directly at <span className="font-semibold">073-464-3339</span>
+          <p className="text-red-50 mt-6 font-medium">
+            Eller ring oss på <span className="font-bold">073-464-3339</span>
           </p>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 md:py-32">
+      <section id="contact" className="py-20 md:py-32 bg-gray-50">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-16">Get in Touch</h2>
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Kontakta Oss</h2>
+          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-            <Card className="glass p-8 text-center hover:shadow-lg transition">
-              <MapPin className="w-8 h-8 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Location</h3>
-              <p className="text-foreground/70">
+            <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600">
+              <MapPin className="w-8 h-8 text-red-600 mx-auto mb-4" />
+              <h3 className="font-bold text-gray-900 mb-2">Adress</h3>
+              <p className="text-gray-600">
                 Närlundavägen 8J<br />
                 252 75 Helsingborg<br />
-                Sweden
+                Sverige
               </p>
             </Card>
-            <Card className="glass p-8 text-center hover:shadow-lg transition">
-              <Phone className="w-8 h-8 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Phone</h3>
-              <p className="text-foreground/70">
-                <a href="tel:073-464-3339" className="hover:text-primary transition">
+            <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600">
+              <Phone className="w-8 h-8 text-red-600 mx-auto mb-4" />
+              <h3 className="font-bold text-gray-900 mb-2">Telefon</h3>
+              <p className="text-gray-600">
+                <a href="tel:073-464-3339" className="hover:text-red-600 transition font-semibold">
                   073-464-3339
                 </a>
                 <br />
-                <span className="text-sm">Mon–Fri: 10:00–20:30</span>
+                <span className="text-sm">Mån–Fre: 10:00–20:30</span>
               </p>
             </Card>
-            <Card className="glass p-8 text-center hover:shadow-lg transition">
-              <Mail className="w-8 h-8 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Hours</h3>
-              <p className="text-foreground/70">
-                <span className="block">Monday–Friday</span>
-                <span className="block font-semibold">10:00–20:30</span>
-                <span className="block text-sm mt-2">Walk-ins welcome!</span>
+            <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600">
+              <Mail className="w-8 h-8 text-red-600 mx-auto mb-4" />
+              <h3 className="font-bold text-gray-900 mb-2">Öppettider</h3>
+              <p className="text-gray-600">
+                <span className="block font-semibold">Måndag–Fredag</span>
+                <span className="block font-bold text-red-600">10:00–20:30</span>
+                <span className="block text-sm mt-2">Drop-in välkommet!</span>
               </p>
             </Card>
           </div>
@@ -319,11 +336,11 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground/5 border-t border-white/20 py-12">
-        <div className="container text-center text-foreground/70">
-          <p className="mb-2">© 2026 Her World Studio. All rights reserved.</p>
-          <p className="text-sm">
-            Närlundavägen 8J, 252 75 Helsingborg, Sweden | 073-464-3339
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="container text-center">
+          <p className="mb-2 font-medium">© 2026 Her World Studio. Alla rättigheter förbehållna.</p>
+          <p className="text-gray-400">
+            Närlundavägen 8J, 252 75 Helsingborg, Sverige | 073-464-3339
           </p>
         </div>
       </footer>
