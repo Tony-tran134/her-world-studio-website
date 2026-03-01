@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ChevronRight, MapPin, Phone, Mail, Star, Calendar } from "lucide-react";
 import { useState } from "react";
+import { BookingModal } from "@/components/BookingModal";
 
 /**
  * Her World Studio - Women Empowerment Design
@@ -11,9 +12,19 @@ import { useState } from "react";
  */
 
 export default function Home() {
+  // Bokadirekt Integration
+  // Business ID: 131326
+  // Booking widget embedded in BookingModal component
   const [bookingEmail, setBookingEmail] = useState("");
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  // Handle service selection (for future analytics)
+  const handleServiceClick = (serviceName: string) => {
+    setSelectedService(serviceName);
+    setIsBookingModalOpen(true);
+  };
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,7 +102,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" suppressHydrationWarning>
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white border-b-4 border-red-600 shadow-md">
         <div className="container py-4 flex items-center justify-between">
@@ -130,12 +141,21 @@ export default function Home() {
               Upplev lyxig skönhetsvård i vår moderna studio i Helsingborg. Vi firar din styrka och självkänsla genom professionell skönhetsbehandling.
             </p>
             <div className="flex gap-4 pt-4">
-              <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100 font-bold">
-                Boka Tid <ChevronRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-red-700 font-bold">
-                Se Tjänster
-              </Button>
+            <Button
+              size="lg"
+              className="bg-white text-red-600 hover:bg-gray-100 font-bold"
+              onClick={() => setIsBookingModalOpen(true)}
+            >
+              Boka Tid <ChevronRight className="ml-2 w-4 h-4" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-white text-white hover:bg-red-700 font-bold"
+              onClick={() => setIsBookingModalOpen(true)}
+            >
+              Se Tjänster
+            </Button>
             </div>
           </div>
           <div className="relative h-96 md:h-full rounded-lg overflow-hidden shadow-2xl">
@@ -202,12 +222,12 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                  <Button
-                    onClick={() => setSelectedService(service.category)}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-bold"
-                  >
-                    Boka denna tjänst
-                  </Button>
+            <Button
+              onClick={() => handleServiceClick(service.category)}
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold"
+            >
+              Boka denna tjänst
+            </Button>
                 </div>
               </Card>
             ))}
@@ -270,25 +290,15 @@ export default function Home() {
             Reservera din tid nu och upplev lyxig skönhetsvård i Helsingborg.
           </p>
 
-          {bookingSubmitted ? (
-            <div className="bg-white text-red-600 p-8 rounded-lg border-4 border-white">
-              <p className="text-lg font-bold">✓ Tack! Vi kontaktar dig snart för att bekräfta din bokning.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleBookingSubmit} className="bg-white text-gray-900 p-8 rounded-lg flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Din e-postadress"
-                value={bookingEmail}
-                onChange={(e) => setBookingEmail(e.target.value)}
-                className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-red-600 font-medium"
-                required
-              />
-              <Button type="submit" className="bg-red-600 hover:bg-red-700 text-white px-8 font-bold">
-                Boka Nu
-              </Button>
-            </form>
-          )}
+          <div className="bg-white text-gray-900 p-8 rounded-lg">
+            <Button
+              onClick={() => setIsBookingModalOpen(true)}
+              className="w-full bg-red-600 hover:bg-red-700 text-white px-8 py-3 font-bold text-lg"
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              Öppna Bokningssystem
+            </Button>
+          </div>
 
           <p className="text-red-50 mt-6 font-medium">
             Eller ring oss på <span className="font-bold">073-464-3339</span>
@@ -334,6 +344,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Booking Modal */}
+      <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
