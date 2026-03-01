@@ -99,6 +99,31 @@ export default function Home() {
       text: "Bästa pedikyr jag någonsin haft. Miljön är så avslappnande och personalen bryr sig verkligen om detaljer. Helt värt det!",
       rating: 5,
     },
+    {
+      name: "Anna",
+      text: "Uppdatera med Google Maps-recension",
+      rating: 5,
+    },
+    {
+      name: "Maria",
+      text: "Uppdatera med Google Maps-recension",
+      rating: 5,
+    },
+    {
+      name: "Jessica",
+      text: "Uppdatera med Google Maps-recension",
+      rating: 5,
+    },
+    {
+      name: "Petra",
+      text: "Uppdatera med Google Maps-recension",
+      rating: 5,
+    },
+    {
+      name: "Karin",
+      text: "Uppdatera med Google Maps-recension",
+      rating: 5,
+    },
   ];
 
   return (
@@ -160,8 +185,8 @@ export default function Home() {
           </div>
           <div className="relative h-96 md:h-full rounded-lg overflow-hidden shadow-2xl">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-nail-art-ao2ZnDUY7Na4jcBeUFjcmb.webp"
-              alt="Lyxiga naglar"
+              src="https://cdn.bokadirekt.se/ucdn/895cb9c7-271e-4497-84a4-ead6a7949770/-/quality/better/-/preview/275x275/"
+              alt="Her World Studio - Lyxig skönhetsvård"
               className="w-full h-full object-cover"
             />
           </div>
@@ -235,13 +260,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 md:py-32 bg-gray-50">
-        <div className="container">
+      {/* Testimonials with Falling Animation */}
+      <section className="py-20 md:py-32 bg-gray-50 relative overflow-hidden min-h-screen">
+        <div className="container relative z-20">
           <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Betyg</h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, idx) => (
+            {testimonials.slice(0, 3).map((testimonial, idx) => (
               <Card key={idx} className="p-8 flex flex-col border-2 border-gray-200 hover:border-red-600 transition">
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -253,6 +278,37 @@ export default function Home() {
               </Card>
             ))}
           </div>
+        </div>
+        
+        {/* Falling Reviews Animation */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {testimonials.map((testimonial, idx) => {
+            const randomLeft = Math.random() * 100;
+            const randomDuration = 8 + Math.random() * 4;
+            const randomDelay = Math.random() * 2;
+            return (
+              <div
+                key={`falling-${idx}`}
+                className="falling-review"
+                style={{
+                  left: `${randomLeft}%`,
+                  animationDuration: `${randomDuration}s`,
+                  animationDelay: `${randomDelay}s`,
+                  width: "200px",
+                }}
+              >
+                <Card className="p-4 bg-white border-2 border-red-600 shadow-lg">
+                  <div className="flex gap-1 mb-2">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-red-600 text-red-600" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 text-xs mb-2 italic line-clamp-2">"{testimonial.text}"</p>
+                  <p className="font-bold text-gray-900 text-xs">— {testimonial.name}</p>
+                </Card>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -351,7 +407,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container text-center">
-          <p className="mb-2 font-medium">© 2025 Her World Studio. Alla rättigheter förbehållna.</p>
+          <p className="mb-2 font-medium">© 2025 Her World Studio.</p>
           <p className="text-gray-400">
             Närlundavägen 8J, 252 75 Helsingborg, Sverige | 073-464-3339
           </p>

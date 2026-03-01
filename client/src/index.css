@@ -185,4 +185,29 @@
       max-width: 1280px; /* Standard content width */
     }
   }
+
+  /* Falling Animation for Reviews */
+  @keyframes fall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .falling-review {
+    animation: fall linear infinite;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10;
+  }
 }
