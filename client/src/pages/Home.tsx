@@ -164,6 +164,8 @@ export default function Home() {
             </h1>
             <p className="text-lg text-red-50 max-w-lg">
               Upplev lyxig skönhetsvård i vår moderna studio i Helsingborg. Vi firar din styrka och självkänsla genom professionell skönhetsbehandling.
+              <br />
+              <span className="text-sm font-semibold">2025 Her World Studio.</span>
             </p>
             <div className="flex gap-4 pt-4">
             <Button
