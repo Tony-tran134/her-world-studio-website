@@ -359,7 +359,7 @@ export default function Home() {
           </div>
 
           <p className="text-red-50 mt-6 font-medium">
-            Eller ring oss på <span className="font-bold">073-464-3339</span>
+            Eller ring oss på <span className="font-bold">073-464 3339</span>
           </p>
         </div>
       </section>
@@ -370,21 +370,23 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Kontakta Oss</h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
-            <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600">
-              <MapPin className="w-8 h-8 text-red-600 mx-auto mb-4" />
-              <h3 className="font-bold text-gray-900 mb-2">Adress</h3>
-              <p className="text-gray-600">
-                Närlundavägen 8J<br />
-                252 75 Helsingborg<br />
-                Sverige
-              </p>
-            </Card>
+            <a href="https://www.google.com/maps/place/Her+World+Studio/@56.0351022,12.7140577,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x4652330038290c19:0xdd9fd2af51020e02!2sHer+World+Studio!8m2!3d56.0350992!4d12.7166326!10e1!16s%2Fg%2F11zk7nssp_!3m5!1s0x4652330038290c19:0xdd9fd2af51020e02!8m2!3d56.0350992!4d12.7166326!16s%2Fg%2F11zk7nssp_?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="block">
+              <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600 cursor-pointer">
+                <MapPin className="w-8 h-8 text-red-600 mx-auto mb-4" />
+                <h3 className="font-bold text-gray-900 mb-2">Adress</h3>
+                <p className="text-gray-600">
+                  Närlundavägen 8J<br />
+                  252 75 Helsingborg<br />
+                  Sverige
+                </p>
+              </Card>
+            </a>
             <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600">
               <Phone className="w-8 h-8 text-red-600 mx-auto mb-4" />
               <h3 className="font-bold text-gray-900 mb-2">Telefon</h3>
               <p className="text-gray-600">
                 <a href="tel:073-464-3339" className="hover:text-red-600 transition font-semibold">
-                  073-464-3339
+                  073-464 33 39
                 </a>
                 <br />
                 <span className="text-sm">Mån–Fre: 10:00–20:30</span>
