@@ -195,27 +195,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Varför välja Her World Studio?</h2>
-          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: "👩‍💼", title: "Erfarna Tekniker", desc: "Över 8 års erfarenhet av nagel- och skönhetsvård" },
-              { icon: "🏥", title: "Medicinsk Sanitet", desc: "Högsta hygienstandarder för din säkerhet" },
-              { icon: "🎨", title: "100+ Designalternativ", desc: "Oändliga möjligheter för dina naglar" },
-            ].map((item, i) => (
-              <Card key={i} className="p-8 text-center hover:shadow-lg transition hover:border-red-600">
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services Section */}
       <section id="services" className="py-20 md:py-32 bg-white">
         <div className="container">
@@ -256,6 +235,27 @@ export default function Home() {
               Boka denna tjänst
             </Button>
                 </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="container">
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Varför välja Her World Studio?</h2>
+          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { icon: "👩‍💼", title: "Erfarna Tekniker", desc: "Över 8 års erfarenhet av nagel- och skönhetsvård" },
+              { icon: "🏥", title: "Sanitet", desc: "Högsta hygienstandarder för din säkerhet" },
+              { icon: "🎨", title: "30+ Designalternativ", desc: "Oändliga möjligheter för dina naglar" },
+            ].map((item, i) => (
+              <Card key={i} className="p-8 text-center hover:shadow-lg transition hover:border-red-600">
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
               </Card>
             ))}
           </div>
