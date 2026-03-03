@@ -19,6 +19,11 @@ export default function Home() {
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+
+  const handleNextTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev + 3) % testimonials.length);
+  };
 
   // Handle service selection (for future analytics)
   const handleServiceClick = (serviceName: string) => {
@@ -251,6 +256,7 @@ export default function Home() {
               { icon: "👩‍💼", title: "Erfarna Tekniker", desc: "Över 8 års erfarenhet av nagel- och skönhetsvård" },
               { icon: "🏥", title: "Sanitet", desc: "Högsta hygienstandarder för din säkerhet" },
               { icon: "🎨", title: "30+ Designalternativ", desc: "Oändliga möjligheter för dina naglar" },
+              { icon: "❗", title: "Endast EN KUND åt gången", desc: "Vi ger varje kund personlig uppmärksamhet och fokus" },
             ].map((item, i) => (
               <Card key={i} className="p-8 text-center hover:shadow-lg transition hover:border-red-600">
                 <div className="text-5xl mb-4">{item.icon}</div>
@@ -268,7 +274,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Betyg</h2>
           <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.slice(0, 3).map((testimonial, idx) => (
+            {testimonials.slice(currentTestimonialIndex, currentTestimonialIndex + 3).map((testimonial, idx) => (
               <Card key={idx} className="p-8 flex flex-col border-2 border-gray-200 hover:border-red-600 transition">
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -280,6 +286,17 @@ export default function Home() {
               </Card>
             ))}
           </div>
+          {testimonials.length > 3 && (
+            <div className="flex justify-center mt-8">
+              <Button
+                onClick={handleNextTestimonial}
+                className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2 flex items-center gap-2"
+              >
+                Nästa Betyg
+                <ChevronRight className="w-5 h-5" />
+              </Button>
+            </div>
+          )}
         </div>
         
         {/* Falling Reviews Animation */}
