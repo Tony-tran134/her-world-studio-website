@@ -341,7 +341,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-gray-700 italic pt-4 border-t border-gray-200">
-                    "Jag älskar att göra mina klienter självsäkra och vackra. Varje nagel är en konstwerk."
+                    Jag älskar att göra andra självsäkra och vackra. Varje nagel är en konstverk.
                   </p>
                 </div>
               </div>
