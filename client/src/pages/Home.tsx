@@ -289,6 +289,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Staff Spotlight - Esmee B */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="container">
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Möt Vår Stjärna</h2>
+          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
+          <div className="max-w-2xl mx-auto">
+            <Card className="overflow-hidden border-2 border-red-600 hover:shadow-2xl transition">
+              <div className="grid md:grid-cols-2 gap-8 p-8 items-center">
+                {/* Esmee's Photo */}
+                <div className="flex justify-center">
+                  <div className="relative">
+                    <img
+                      src="https://ucarecdn.com/dacc7ad7-8bb0-4217-8139-7fc201b2cd0a/-/resize/200x/"
+                      alt="Esmee B - Nageltekniker"
+                      className="w-48 h-48 rounded-lg object-cover shadow-lg"
+                    />
+                    <div className="absolute -bottom-4 -right-4 bg-red-600 text-white rounded-full p-4 text-center shadow-lg">
+                      <div className="text-2xl font-bold">4.9</div>
+                      <div className="text-xs">av 5</div>
+                    </div>
+                  </div>
+                </div>
+                {/* Esmee's Info */}
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-2">Esmee B</h3>
+                    <p className="text-red-600 font-semibold text-lg mb-4">Nageltekniker, Fransstylist & Lash and Brow Artist</p>
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">⭐</span>
+                      <div>
+                        <p className="font-bold text-gray-900">500+ Positiva Recensioner</p>
+                        <p className="text-gray-600 text-sm">Från nöjda klienter på Bokadirekt</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">💼</span>
+                      <div>
+                        <p className="font-bold text-gray-900">8+ År Erfarenhet</p>
+                        <p className="text-gray-600 text-sm">Certifierad med professionella produkter från Lilly Nails</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">✨</span>
+                      <div>
+                        <p className="font-bold text-gray-900">Specialisering</p>
+                        <p className="text-gray-600 text-sm">Gelnaglar, Akrylnaglar, Nageldesign, Franstillägning & Bryn</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 italic pt-4 border-t border-gray-200">
+                    "Jag älskar att göra mina klienter självsäkra och vackra. Varje nagel är en konstwerk."
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials with Falling Animation */}
       <section className="py-20 md:py-32 bg-gray-50 relative overflow-hidden min-h-screen">
         <div className="container relative z-20">
