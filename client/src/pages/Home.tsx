@@ -25,10 +25,16 @@ export default function Home() {
     setCurrentTestimonialIndex((prev) => (prev + 3) % testimonials.length);
   };
 
-  // Handle service selection (for future analytics)
+  // Handle service selection - redirect to Bokadirekt
   const handleServiceClick = (serviceName: string) => {
-    setSelectedService(serviceName);
-    setIsBookingModalOpen(true);
+    const serviceUrls: { [key: string]: string } = {
+      "Gelnaglar": "https://www.bokadirekt.se/places/her-world-studio-131326#gel-naglar",
+      "Akrylnaglar": "https://www.bokadirekt.se/places/her-world-studio-131326#akryl-naglar",
+      "Fransar & Bryn": "https://www.bokadirekt.se/places/her-world-studio-131326#fransar-bryn",
+      "Pedikyr": "https://www.bokadirekt.se/places/her-world-studio-131326#pedikyr",
+    };
+    const url = serviceUrls[serviceName] || "https://www.bokadirekt.se/places/her-world-studio-131326";
+    window.open(url, "_blank");
   };
 
   const handleBookingSubmit = (e: React.FormEvent) => {
