@@ -105,18 +105,18 @@ export default function Home() {
       rating: 5,
     },
     {
-      name: "Anna",
-      text: "Uppdatera med Google Maps-recension",
+      name: "Riza Hope Molo",
+      text: "Amazing work! She really is very meticulous in every nail. I didn't feel rushed like other nail salons. Very very happy and will come back again! Glad I found this gem 🥰",
       rating: 5,
     },
     {
-      name: "Maria",
-      text: "Uppdatera med Google Maps-recension",
+      name: "Johanna H Lundgren",
+      text: "Esmee is amazing. Very talented and detailed . Will come again!",
       rating: 5,
     },
     {
-      name: "Jessica",
-      text: "Uppdatera med Google Maps-recension",
+      name: "Liv Ekström",
+      text: "Really lovely service and super nice results!!",
       rating: 5,
     },
     {
@@ -127,6 +127,21 @@ export default function Home() {
     {
       name: "Melinda",
       text: "Hon är super duktig & jätte noggrann!!\nKommer definitivt fortsätta att göra mina här✨",
+      rating: 5,
+    },
+    {
+      name: "Mah Sarin",
+      text: "Esmee is so good and nice🤎 I will definitely come back 🤎🤎🤎",
+      rating: 5,
+    },
+    {
+      name: "Milena",
+      text: "Professional and thorough, I am very satisfied 😇🤩",
+      rating: 5,
+    },
+    {
+      name: "Helene Beaino",
+      text: "I'm very happy, she's very talented.",
       rating: 5,
     },
   ];
