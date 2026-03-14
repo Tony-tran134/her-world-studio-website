@@ -120,13 +120,13 @@ export default function Home() {
       rating: 5,
     },
     {
-      name: "Petra",
-      text: "Uppdatera med Google Maps-recension",
+      name: "Katerina",
+      text: "Jättefina! Aldrig varit nöjdare med mina naglar! Första gången jag har varit här och kommer definitivt komma tillbaka! Hon tar sin tid, gör naglarna fint o nogrannt! Gjorde dom bättre än min inspo bild! Sjukt nöjd!!!",
       rating: 5,
     },
     {
-      name: "Karin",
-      text: "Uppdatera med Google Maps-recension",
+      name: "Melinda",
+      text: "Hon är super duktig & jätte noggrann!!\nKommer definitivt fortsätta att göra mina här✨",
       rating: 5,
     },
   ];
@@ -253,7 +253,7 @@ export default function Home() {
           <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "👩‍💼", title: "Erfarna Tekniker", desc: "Över 8 års erfarenhet av nagel- och skönhetsvård" },
+              { icon: "👩‍💼", title: "Erfarna Nageltekniker", desc: "Över 8 års erfarenhet av nagel- och skönhetsvård" },
               { icon: "🏥", title: "Sanitet", desc: "Högsta hygienstandarder för din säkerhet" },
               { icon: "🎨", title: "30+ Designalternativ", desc: "Oändliga möjligheter för dina naglar" },
               { icon: "❗", title: "Endast EN KUND åt gången", desc: "Vi ger varje kund personlig uppmärksamhet och fokus" },
