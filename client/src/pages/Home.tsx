@@ -489,7 +489,7 @@ export default function Home() {
                   073-464 33 39
                 </a>
                 <br />
-                <span className="text-sm">Mån–Fre: 10:00–20:30</span>
+                <span className="text-sm">Mån–Fre: 09:00–20:30<br />Lör–Sön: 10:00–18:00</span>
               </p>
             </Card>
             <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600 cursor-pointer" onClick={() => setIsHoursModalOpen(true)}>
