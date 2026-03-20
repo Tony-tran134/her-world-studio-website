@@ -101,8 +101,8 @@ export default function Home() {
       rating: 5,
     },
     {
-      name: "Hanna Gacic",
-      text: "Aldrig fått så fina nagalar innan! Så nogrann och duktig, bryr sig verkligheten att kunden blir nöjd! Riktigt fräsch salong också. Hittat min nya nagel tjej😍",
+      name: "Sofia",
+      text: "Franstilläggen är fantastiska! Hela teamet är så professionellt och gör mig känna mig värderad. Jag rekommenderar det till alla mina vänner.",
       rating: 5,
     },
     {
@@ -410,57 +410,6 @@ export default function Home() {
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* Before & After Gallery */}
-      <section className="py-20 md:py-32 bg-gray-50">
-        <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">Före & Efter</h2>
-          <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
-          <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-            Se den otroliga transformationen av våra kliensters naglar. Varje projekt är ett bevis på vår skicklighet och dedikation.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Gelnaglar Transformation",
-                before: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-nail-art-WEjYTdxAWJXNCWcHxpLYx2.webp",
-                after: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/service-pedicure-WEjYTdxAWJXNCWcHxpLYx2.webp",
-              },
-              {
-                title: "Akrylnaglar Design",
-                before: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-salon-interior-WEjYTdxAWJXNCWcHxpLYx2.webp",
-                after: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/service-lash-extensions-WEjYTdxAWJXNCWcHxpLYx2.webp",
-              },
-              {
-                title: "Nagelkonst Specialdesign",
-                before: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-nail-art-WEjYTdxAWJXNCWcHxpLYx2.webp",
-                after: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/service-pedicure-WEjYTdxAWJXNCWcHxpLYx2.webp",
-              },
-              {
-                title: "Franstillägning & Bryn",
-                before: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/service-lash-extensions-WEjYTdxAWJXNCWcHxpLYx2.webp",
-                after: "https://d2xsxph8kpxj0f.cloudfront.net/310519663377297271/kwrSPf2AsTFYNn53QXRE4b/hero-salon-interior-WEjYTdxAWJXNCWcHxpLYx2.webp",
-              },
-            ].map((item, idx) => (
-              <Card key={idx} className="overflow-hidden border-2 border-red-600 hover:shadow-xl transition">
-                <div className="space-y-4 p-6">
-                  <h3 className="text-xl font-bold text-gray-900 text-center">{item.title}</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <p className="text-sm font-semibold text-red-600 text-center">FÖRE</p>
-                      <img src={item.before} alt="Före" className="w-full h-40 object-cover rounded-lg" />
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-sm font-semibold text-red-600 text-center">EFTER</p>
-                      <img src={item.after} alt="Efter" className="w-full h-40 object-cover rounded-lg" />
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
         </div>
       </section>
 
