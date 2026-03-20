@@ -101,8 +101,8 @@ export default function Home() {
       rating: 5,
     },
     {
-      name: "Sofia",
-      text: "Franstilläggen är fantastiska! Hela teamet är så professionellt och gör mig känna mig värderad. Jag rekommenderar det till alla mina vänner.",
+      name: "Hanna Gacic",
+      text: "Aldrig fått så fina nagalar innan! Så nogrann och duktig, bryr sig verkligheten att kunden blir nöjd! Riktigt fräsch salong också. Hittat min nya nagel tjej😍",
       rating: 5,
     },
     {
