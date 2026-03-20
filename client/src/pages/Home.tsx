@@ -20,6 +20,7 @@ export default function Home() {
   const [selectedService, setSelectedService] = useState<string | null>(null);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [isHoursModalOpen, setIsHoursModalOpen] = useState(false);
 
   const handleNextTestimonial = () => {
     setCurrentTestimonialIndex((prev) => (prev + 3) % testimonials.length);
@@ -491,18 +492,51 @@ export default function Home() {
                 <span className="text-sm">Mån–Fre: 10:00–20:30</span>
               </p>
             </Card>
-            <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600">
+            <Card className="p-8 text-center hover:shadow-lg transition border-2 border-gray-200 hover:border-red-600 cursor-pointer" onClick={() => setIsHoursModalOpen(true)}>
               <Mail className="w-8 h-8 text-red-600 mx-auto mb-4" />
               <h3 className="font-bold text-gray-900 mb-2">Öppettider</h3>
               <p className="text-gray-600">
-                <span className="block font-semibold">Måndag–Fredag</span>
-                <span className="block font-bold text-red-600">10:00–20:30</span>
-                <span className="block text-sm mt-2">Drop-in välkommet!</span>
+                <span className="block text-sm">Ring oss utanför öppettid! 📞✨</span>
               </p>
             </Card>
           </div>
         </div>
       </section>
+
+      {/* Opening Hours Modal */}
+      {isHoursModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in">
+          <Card className="w-full max-w-md bg-white border-2 border-red-600 animate-scale-in">
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-900">Öppettider</h2>
+                <button
+                  onClick={() => setIsHoursModalOpen(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { day: "Måndag", hours: "10:00 - 20:30" },
+                  { day: "Tisdag", hours: "09:00 - 20:30" },
+                  { day: "Onsdag", hours: "09:00 - 20:30" },
+                  { day: "Torsdag", hours: "09:00 - 20:30" },
+                  { day: "Fredag", hours: "09:00 - 20:30" },
+                  { day: "Lördag", hours: "10:00 - 18:00" },
+                  { day: "Söndag", hours: "10:00 - 18:00" },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between items-center pb-3 border-b border-gray-200 last:border-b-0">
+                    <span className="font-semibold text-gray-900">{item.day}</span>
+                    <span className="text-red-600 font-bold">{item.hours}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+        </div>
+      )}
 
       {/* Booking Modal */}
       <BookingModal isOpen={isBookingModalOpen} onClose={() => setIsBookingModalOpen(false)} />
