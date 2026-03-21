@@ -275,7 +275,7 @@ export default function Home() {
           <div className="w-16 h-1 bg-red-600 mx-auto mb-12" />
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "👩‍💼", title: "Erfarna Nageltekniker", desc: "Över 8 års erfarenhet av nagel- och skönhetsvård" },
+              { icon: "💅", title: "Erfarna Nageltekniker", desc: "Över 8 års erfarenhet av nagel- och skönhetsvård" },
               { icon: "🏥", title: "Sanitet", desc: "Högsta hygienstandarder för din säkerhet" },
               { icon: "🎨", title: "30+ Designalternativ", desc: "Oändliga möjligheter för dina naglar" },
               { icon: "❗", title: "Endast EN KUND åt gången", desc: "Vi ger varje kund personlig uppmärksamhet och fokus" },
