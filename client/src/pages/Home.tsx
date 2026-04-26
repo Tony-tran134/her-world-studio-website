@@ -239,12 +239,12 @@ export default function Home() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-red-700 rounded-full -mr-48 -mt-48 opacity-50" />
         <div className="container grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight" style={{ fontSize: '40px', marginLeft: '10px' }}>
               Your Time.<br />
               Your Space.<br />
               Your Beauty.
             </h1>
-            <p className="text-lg text-red-50 max-w-lg">
+            <p className="text-lg text-red-50 max-w-lg" style={{ fontSize: '16px', marginBottom: '20px', marginLeft: '15px', width: '300px' }}>
               Experience luxury beauty care in our modern studio in Helsingborg. We celebrate your strength and confidence through professional beauty treatments.
               <br />
               <span className="text-sm font-semibold">2025 Her World Studio.</span>
@@ -253,6 +253,7 @@ export default function Home() {
             <Button
               size="lg"
               className="bg-white text-red-600 hover:bg-gray-100 font-bold"
+              style={{ paddingRight: '0px', marginLeft: '12px', width: '180px' }}
               onClick={() => {
                 const element = document.getElementById('services');
                 element?.scrollIntoView({ behavior: 'smooth' });
@@ -264,6 +265,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="border-2 border-white text-white hover:bg-red-700 font-bold"
+              style={{ paddingLeft: '10px' }}
               onClick={() => setIsBookingModalOpen(true)}
             >
               View Services
