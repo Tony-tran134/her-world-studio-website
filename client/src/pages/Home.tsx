@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ChevronRight, MapPin, Phone, Mail, Star, Calendar } from "lucide-react";
+import { ChevronRight, MapPin, Phone, Mail, Star, Calendar, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { BookingModal } from "@/components/BookingModal";
 import { SparklesText } from "@/components/SparklesText";
@@ -23,6 +23,7 @@ export default function Home() {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isHoursModalOpen, setIsHoursModalOpen] = useState(false);
   const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNextTestimonial = () => {
     setCurrentTestimonialIndex((prev) => (prev + 3) % testimonials.length);
@@ -164,6 +165,7 @@ export default function Home() {
             <SparklesText text="Her World" className="text-2xl" sparklesCount={6} colors={{ first: "#640606", second: "#FFFFFF" }} />
             <span className="text-red-600">Studio</span>
           </div>
+          {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center">
             <a href="#services" className="font-medium text-gray-800 hover:text-red-600 transition">
               Services
@@ -174,12 +176,62 @@ export default function Home() {
             <a href="#contact" className="font-medium text-gray-800 hover:text-red-600 transition">
               Contact
             </a>
-            <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2">
+            <Button 
+              onClick={() => {
+                const element = document.getElementById('services');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2"
+            >
               <Calendar className="w-4 h-4 mr-2" />
               Book Now
             </Button>
           </div>
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-gray-800 hover:text-red-600 transition"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white border-t-2 border-red-600 p-4 space-y-3">
+            <a 
+              href="#services" 
+              className="block font-medium text-gray-800 hover:text-red-600 transition py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Services
+            </a>
+            <a 
+              href="#about" 
+              className="block font-medium text-gray-800 hover:text-red-600 transition py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About Us
+            </a>
+            <a 
+              href="#contact" 
+              className="block font-medium text-gray-800 hover:text-red-600 transition py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </a>
+            <Button 
+              onClick={() => {
+                const element = document.getElementById('services');
+                element?.scrollIntoView({ behavior: 'smooth' });
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2"
+            >
+              <Calendar className="w-4 h-4 mr-2" />
+              Book Now
+            </Button>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -201,7 +253,10 @@ export default function Home() {
             <Button
               size="lg"
               className="bg-white text-red-600 hover:bg-gray-100 font-bold"
-              onClick={() => setIsBookingModalOpen(true)}
+              onClick={() => {
+                const element = document.getElementById('services');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               Book Appointment <ChevronRight className="ml-2 w-4 h-4" />
             </Button>
