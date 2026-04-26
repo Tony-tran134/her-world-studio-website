@@ -249,7 +249,7 @@ export default function Home() {
               <br />
               <span className="text-sm font-semibold">2025 Her World Studio.</span>
             </p>
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-4 pt-4" style={{ marginLeft: '-11px' }}>
             <Button
               size="lg"
               className="bg-white text-red-600 hover:bg-gray-100 font-bold"
