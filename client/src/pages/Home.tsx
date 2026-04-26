@@ -244,7 +244,7 @@ export default function Home() {
               Your Space.<br />
               Your Beauty.
             </h1>
-            <p className="text-lg text-red-50 max-w-lg" style={{ fontSize: '16px', marginBottom: '20px', marginLeft: '15px', width: '300px' }}>
+            <p className="text-lg text-red-50 max-w-lg" style={{ fontSize: '18px', marginBottom: '20px', marginLeft: '15px', width: '300px' }}>
               Experience luxury beauty care in our modern studio in Helsingborg. We celebrate your strength and confidence through professional beauty treatments.
               <br />
               <span className="text-sm font-semibold">2025 Her World Studio.</span>
