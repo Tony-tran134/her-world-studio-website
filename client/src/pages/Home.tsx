@@ -21,6 +21,7 @@ export default function Home() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const [isHoursModalOpen, setIsHoursModalOpen] = useState(false);
+  const [expandedService, setExpandedService] = useState<string | null>(null);
 
   const handleNextTestimonial = () => {
     setCurrentTestimonialIndex((prev) => (prev + 3) % testimonials.length);
@@ -78,7 +79,6 @@ export default function Home() {
         { name: "Klassiska Fransar", price: "550 kr", time: "75 min" },
         { name: "Mix Fransar", price: "650 kr", time: "85 min" },
         { name: "Lash Lift & Färgning", price: "595 kr", time: "50 min" },
-        { name: "Lash + Brow Lift", price: "995 kr", time: "60 min" },
       ],
       description: "Vackra fransar och välformade bryn som framhäver dina ögon",
       icon: "👁️",
@@ -89,6 +89,7 @@ export default function Home() {
         { name: "Zen Pedikyr (utan färg)", price: "400 kr", time: "50 min" },
         { name: "Lyx Pedikyr (med färg)", price: "450 kr", time: "60 min" },
         { name: "Shellac på tånaglar", price: "300 kr", time: "30 min" },
+        { name: "Nageldesign På Tånaglar", price: "500 kr", time: "60 min" },
       ],
       description: "Välvårdade fötter som gör dig självsäker från tår till topp",
       icon: "🦶",
@@ -214,7 +215,7 @@ export default function Home() {
           </div>
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden shadow-2xl mx-auto">
             <img
-              src="https://cdn.bokadirekt.se/ucdn/895cb9c7-271e-4497-84a4-ead6a7949770/-/quality/better/-/preview/275x275/"
+              src="https://cdn.discordapp.com/attachments/1302332021456240681/1495061167390064660/Untitled13_20260331195347.png?ex=69eec2f7&is=69ed7177&hm=a96ae60eeed884387d3eb8661bc2d77ac4f9c4973c2585a5356031e8be97bf58&"
               alt="Her World Studio - Lyxig skönhetsvård"
               className="w-full h-full object-cover"
             />
@@ -234,34 +235,43 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, idx) => (
               <Card key={idx} className="overflow-hidden hover:shadow-xl transition border-2 border-gray-200 hover:border-red-600">
-                <div className="text-white p-6" style={{backgroundColor: '#640606'}}>
-                  <div className="flex items-center gap-4">
-                    <span className="text-4xl">{service.icon}</span>
-                    <div>
-                      <h3 className="text-2xl font-bold">{service.category}</h3>
-                      <p className="text-red-100 text-sm">{service.description}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-8">
-                  <div className="space-y-3 mb-6">
-                    {service.items.map((item, i) => (
-                      <div key={i} className="flex justify-between items-start pb-3 border-b border-gray-200 last:border-0">
-                        <div>
-                          <p className="font-semibold text-gray-900">{item.name}</p>
-                          <p className="text-sm text-gray-500">{item.time}</p>
-                        </div>
-                        <p className="font-bold text-red-600">{item.price}</p>
+                <button
+                  onClick={() => setExpandedService(expandedService === service.category ? null : service.category)}
+                  className="w-full text-white p-6 hover:opacity-90 transition" 
+                  style={{backgroundColor: '#640606'}}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4 flex-1 text-left">
+                      <span className="text-4xl">{service.icon}</span>
+                      <div>
+                        <h3 className="text-2xl font-bold">{service.category}</h3>
+                        <p className="text-red-100 text-sm">{service.description}</p>
                       </div>
-                    ))}
+                    </div>
+                    <span className="text-2xl ml-4">{expandedService === service.category ? '−' : '+'}</span>
                   </div>
-            <Button
-              onClick={() => handleServiceClick(service.category)}
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold"
-            >
-              Boka denna tjänst
-            </Button>
-                </div>
+                </button>
+                {expandedService === service.category && (
+                  <div className="p-8">
+                    <div className="space-y-3 mb-6">
+                      {service.items.map((item, i) => (
+                        <div key={i} className="flex justify-between items-start pb-3 border-b border-gray-200 last:border-0">
+                          <div>
+                            <p className="font-semibold text-gray-900">{item.name}</p>
+                            <p className="text-sm text-gray-500">{item.time}</p>
+                          </div>
+                          <p className="font-bold text-red-600">{item.price}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <Button
+                      onClick={() => handleServiceClick(service.category)}
+                      className="w-full bg-red-600 hover:bg-red-700 text-white font-bold"
+                    >
+                      Boka denna tjänst
+                    </Button>
+                  </div>
+                )}
               </Card>
             ))}
           </div>
