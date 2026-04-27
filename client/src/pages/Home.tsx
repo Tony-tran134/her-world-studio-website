@@ -162,8 +162,7 @@ export default function Home() {
       <nav className="sticky top-0 z-50 bg-white border-b-4 border-red-600 shadow-md">
         <div className="container py-4 flex items-center justify-between">
           <div className="text-2xl font-bold flex items-center gap-2" style={{ justifyContent: 'center' }}> {/* make the text symmertrical horizontolly */}
-            <SparklesText text="Her World" className="text-2xl" sparklesCount={6} colors={{ first: "#640606", second: "#FFFFFF" }} />
-            <span className="text-red-600">Studio</span>
+            <SparklesText text="Her World Studio" className="text-2xl" sparklesCount={6} colors={{ first: "#640606", second: "#FFFFFF" }} />
           </div>
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center">

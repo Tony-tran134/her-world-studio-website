@@ -116,7 +116,18 @@ const SparklesText: React.FC<SparklesTextProps> = ({
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}
-        <strong>{text}</strong>
+        <strong>
+          {text.split(' ').map((word, idx, arr) => {
+            const isLastWord = idx === arr.length - 1;
+            return (
+              <span key={idx} style={isLastWord && word === 'Studio' ? { color: '#640606' } : {}}>
+                {word}
+                {idx < arr.length - 1 && ' '}
+              </span>
+            );
+          })}
+        </strong>
+        {/* Make the "Studio" dark red colored with #640606 */}
       </span>
     </div>
   );
