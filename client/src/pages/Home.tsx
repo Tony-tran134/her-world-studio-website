@@ -161,7 +161,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white border-b-4 border-red-600 shadow-md">
         <div className="container py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold flex items-center gap-2">
+          <div className="text-2xl font-bold flex items-center gap-2" style={{ justifyContent: 'center' }}> {/* make the text symmertrical horizontolly */}
             <SparklesText text="Her World" className="text-2xl" sparklesCount={6} colors={{ first: "#640606", second: "#FFFFFF" }} />
             <span className="text-red-600">Studio</span>
           </div>
@@ -253,7 +253,7 @@ export default function Home() {
             <Button
               size="lg"
               className="bg-white text-red-600 hover:bg-gray-100 font-bold"
-              style={{ paddingLeft: '10px', marginLeft: '12px', width: '180px' }}
+              style={{ paddingLeft: '11px', paddingRight: '11px', marginLeft: '12px', width: '180px' }}
               onClick={() => {
                 const element = document.getElementById('services');
                 element?.scrollIntoView({ behavior: 'smooth' });
@@ -265,7 +265,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="border-2 border-white text-white hover:bg-red-700 font-bold"
-              style={{ paddingRight: '10px' }}
+              style={{ paddingLeft: '11px', paddingRight: '11px' }}
               onClick={() => {
                 const element = document.getElementById('services');
                 element?.scrollIntoView({ behavior: 'smooth' });
