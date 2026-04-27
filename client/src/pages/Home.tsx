@@ -253,7 +253,7 @@ export default function Home() {
             <Button
               size="lg"
               className="bg-white text-red-600 hover:bg-gray-100 font-bold"
-              style={{ paddingRight: '0px', marginLeft: '12px', width: '180px' }}
+              style={{ paddingLeft: '10px', marginLeft: '12px', width: '180px' }}
               onClick={() => {
                 const element = document.getElementById('services');
                 element?.scrollIntoView({ behavior: 'smooth' });
@@ -265,8 +265,11 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="border-2 border-white text-white hover:bg-red-700 font-bold"
-              style={{ paddingLeft: '10px' }}
-              onClick={() => setIsBookingModalOpen(true)}
+              style={{ paddingRight: '10px' }}
+              onClick={() => {
+                const element = document.getElementById('services');
+                element?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               View Services
             </Button>
@@ -510,7 +513,7 @@ export default function Home() {
       </section>
 
       {/* Booking CTA */}
-      <section className="py-20 md:py-32 bg-red-600 text-white">
+      <section className="py-20 md:py-32 text-white" style={{ backgroundColor: '#640606' }}>
         <div className="container max-w-2xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Book?</h2>
           <p className="text-lg text-red-50 mb-8">
