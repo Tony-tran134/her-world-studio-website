@@ -161,13 +161,10 @@ export default function Home() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white border-b-4 border-red-600 shadow-md">
         <div className="container py-4 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 hover:opacity-80 transition">
-            <img 
-              src="/manus-storage/Herworld_64f94b0f.png" 
-              alt="Her World Studio Logo" 
-              className="h-16 w-16 object-contain"
-            />
-          </a>
+          <div className="text-2xl font-bold flex items-center gap-2">
+            <SparklesText text="Her World" className="text-2xl" sparklesCount={6} colors={{ first: "#640606", second: "#FFFFFF" }} />
+            <span className="text-red-600">Studio</span>
+          </div>
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center">
             <a href="#services" className="font-medium text-gray-800 hover:text-red-600 transition">
