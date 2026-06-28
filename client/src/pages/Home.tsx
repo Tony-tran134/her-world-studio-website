@@ -276,7 +276,7 @@ export default function Home() {
           </div>
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden shadow-2xl mx-auto">
             <img
-              src="https://cdn.discordapp.com/attachments/1302332021456240681/1495061167390064660/Untitled13_20260331195347.png?ex=69eec2f7&is=69ed7177&hm=a96ae60eeed884387d3eb8661bc2d77ac4f9c4973c2585a5356031e8be97bf58&"
+              src="/manus-storage/Her_world_cb2a46eb.png"
               alt="Her World Studio - Luxury Beauty Care"
               className="w-full h-full object-cover"
             />
