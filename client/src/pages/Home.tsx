@@ -176,10 +176,7 @@ export default function Home() {
               Contact
             </a>
             <Button 
-              onClick={() => {
-                const element = document.getElementById('services');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => window.open('https://www.bokadirekt.se/places/her-world-studio-131326', '_blank')}
               className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-2"
             >
               <Calendar className="w-4 h-4 mr-2" />
@@ -253,10 +250,7 @@ export default function Home() {
               size="lg"
               className="bg-white text-red-600 hover:bg-gray-100 font-bold"
               style={{ paddingLeft: '11px', paddingRight: '11px', marginLeft: '12px', width: '180px' }}
-              onClick={() => {
-                const element = document.getElementById('services');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => window.open('https://www.bokadirekt.se/places/her-world-studio-131326', '_blank')}
             >
               Book Appointment <ChevronRight className="ml-2 w-4 h-4" />
             </Button>
