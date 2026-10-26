@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { LogOut, Menu, X, BarChart3, Calendar, Briefcase, Eye } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "wouter";
 
 export default function Dashboard() {
-  const navigate = useNavigate();
+  const [, navigate] = useLocation();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const [logoutError, setLogoutError] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("overview");
   const [bookings, setBookings] = useState([
@@ -22,18 +24,45 @@ export default function Dashboard() {
   ]);
 
   useEffect(() => {
-    // Check if admin is logged in
-    const adminAuth = localStorage.getItem("adminAuth");
-    if (!adminAuth) {
-      navigate("/admin-login");
-    } else {
-      setIsAdmin(true);
-    }
+    let active = true;
+
+    fetch("/api/admin/session", { cache: "no-store" })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Unable to verify the admin session.");
+        return (await response.json()) as {
+          enabled: boolean;
+          authenticated: boolean;
+        };
+      })
+      .then((status) => {
+        if (!active) return;
+        if (status.enabled && status.authenticated) setIsAdmin(true);
+        else navigate("/admin-login");
+      })
+      .catch(() => {
+        if (active) navigate("/admin-login");
+      });
+
+    return () => {
+      active = false;
+    };
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("adminAuth");
-    navigate("/");
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    setLogoutError("");
+
+    try {
+      const response = await fetch("/api/admin/logout", {
+        method: "POST",
+        credentials: "same-origin",
+      });
+      if (!response.ok) throw new Error("Unable to sign out. Please try again.");
+      navigate("/");
+    } catch (error) {
+      setLogoutError(error instanceof Error ? error.message : "Unable to sign out.");
+      setIsLoggingOut(false);
+    }
   };
 
   const stats = {
@@ -65,7 +94,7 @@ export default function Dashboard() {
               className="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 flex items-center gap-2"
             >
               <LogOut className="w-4 h-4" />
-              Logout
+              {isLoggingOut ? "Logging out..." : "Logout"}
             </Button>
           </div>
           {/* Mobile Menu Toggle */}
@@ -87,11 +116,25 @@ export default function Dashboard() {
               className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 flex items-center justify-center gap-2"
             >
               <LogOut className="w-4 h-4" />
-              Logout
+              {isLoggingOut ? "Logging out..." : "Logout"}
             </Button>
           </div>
         )}
       </nav>
+
+      <div
+        className="border-b border-amber-200 bg-amber-50 px-6 py-3 text-sm text-amber-900"
+        role="note"
+      >
+        Demo dashboard: the bookings, revenue, and analytics shown here are sample data.
+        They are not connected to a live database or Bokadirekt.
+      </div>
+
+      {logoutError && (
+        <p className="bg-red-50 px-6 py-3 text-sm text-red-700" role="alert">
+          {logoutError}
+        </p>
+      )}
 
       {/* Main Dashboard Content */}
       <div className="flex flex-1">
