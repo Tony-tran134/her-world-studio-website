@@ -1,33 +1,72 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "wouter";
 
 export default function AdminLogin() {
-  const navigate = useNavigate();
+  const [, navigate] = useLocation();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [availabilityMessage, setAvailabilityMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isCheckingAvailability, setIsCheckingAvailability] = useState(true);
+  const [adminEnabled, setAdminEnabled] = useState(false);
 
-  // Demo password - CHANGE THIS TO A SECURE PASSWORD
-  const ADMIN_PASSWORD = "HerWorld123!";
+  useEffect(() => {
+    let active = true;
 
-  const handleLogin = (e: React.FormEvent) => {
+    fetch("/api/admin/session", { cache: "no-store" })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Admin sign-in is unavailable.");
+        return (await response.json()) as {
+          enabled: boolean;
+          authenticated: boolean;
+        };
+      })
+      .then((status) => {
+        if (!active) return;
+        setAdminEnabled(status.enabled);
+        if (status.authenticated) navigate("/dashboard");
+      })
+      .catch(() => {
+        if (active) setAvailabilityMessage("Admin sign-in is temporarily unavailable.");
+      })
+      .finally(() => {
+        if (active) setIsCheckingAvailability(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [navigate]);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      if (password === ADMIN_PASSWORD) {
-        localStorage.setItem("adminAuth", "true");
-        navigate("/dashboard");
-      } else {
-        setError("Invalid password. Try: HerWorld123!");
-        setPassword("");
+    try {
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ password }),
+      });
+      const result = (await response.json().catch(() => ({}))) as {
+        error?: string;
+      };
+
+      if (!response.ok) {
+        throw new Error(result.error || "Unable to sign in.");
       }
+
+      navigate("/dashboard");
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Unable to sign in.");
+      setPassword("");
+    } finally {
       setIsLoading(false);
-    }, 500);
+    }
   };
 
   return (
@@ -56,6 +95,8 @@ export default function AdminLogin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter admin password"
+                required
+                disabled={isCheckingAvailability || !adminEnabled}
                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-red-600 transition font-medium"
               />
             </div>
@@ -70,23 +111,23 @@ export default function AdminLogin() {
             {/* Login Button */}
             <Button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || isCheckingAvailability || !adminEnabled}
               className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition disabled:opacity-50"
             >
-              {isLoading ? "Logging in..." : "Login to Dashboard"}
+              {isCheckingAvailability
+                ? "Checking sign-in..."
+                : isLoading
+                  ? "Logging in..."
+                  : "Login to Dashboard"}
             </Button>
           </form>
 
-          {/* Demo Notice */}
-          <div className="mt-6 p-4 bg-yellow-50 border-2 border-yellow-200 rounded-lg">
-            <p className="text-xs text-yellow-800 font-medium mb-2">🔐 Demo Credentials:</p>
-            <p className="text-xs text-yellow-700">
-              <strong>Password:</strong> HerWorld123!
+          {!isCheckingAvailability && !adminEnabled && (
+            <p className="mt-4 text-sm text-red-700" role="status">
+              {availabilityMessage ||
+                "Admin sign-in is not configured on this site. Please contact the site owner."}
             </p>
-            <p className="text-xs text-yellow-600 mt-2 italic">
-              ⚠️ Change this password in production!
-            </p>
-          </div>
+          )}
 
           {/* Back Link */}
           <div className="text-center mt-6">
@@ -99,10 +140,6 @@ export default function AdminLogin() {
           </div>
         </Card>
 
-        {/* Security Notice */}
-        <div className="mt-8 p-4 bg-white bg-opacity-10 rounded-lg text-white text-center text-sm">
-          <p>🔒 This is a secure admin area. Only authorized personnel should access.</p>
-        </div>
       </div>
     </div>
   );

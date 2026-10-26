@@ -270,7 +270,7 @@ export default function Home() {
           </div>
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden shadow-2xl mx-auto">
             <img
-              src="/manus-storage/pasted_file_3QKffE_Herworld_dadcf4aa.png"
+              src="/hero-salon-interior.webp"
               alt="Her World Studio - Luxury Beauty Care"
               className="w-full h-full object-cover"
             />
