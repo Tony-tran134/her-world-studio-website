@@ -40,43 +40,79 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  --color-red-50: var(--brand-red-50);
+  --color-red-100: var(--brand-red-100);
+  --color-red-200: var(--brand-red-200);
+  --color-red-300: var(--brand-red-300);
+  --color-red-400: var(--brand-red-400);
+  --color-red-500: var(--brand-red-500);
+  --color-red-600: var(--brand-primary);
+  --color-red-700: var(--brand-primary-dark);
+  --color-red-800: var(--brand-red-800);
+  --color-red-900: var(--brand-red-900);
+  --color-gray-50: var(--brand-section-background);
+  --color-gray-600: var(--brand-text-secondary);
+  --color-gray-700: var(--brand-text-secondary-strong);
+  --color-gray-900: var(--brand-text-primary);
+  --color-white: var(--brand-background);
 }
 
 :root {
-  /* Bold Feminism - Women Empowerment Design */
-  --primary: #d32f2f;
+  /* Her World Studio brand system */
+  --brand-primary: #640606;
+  --brand-primary-dark: #470303;
+  --brand-secondary: #8b2433;
+  --brand-accent: #c6a176;
+  --brand-background: #ffffff;
+  --brand-section-background: #fbf7f6;
+  --brand-text-primary: #21191a;
+  --brand-text-secondary: #6e6263;
+  --brand-text-secondary-strong: #514647;
+  --brand-red-50: #fff8f7;
+  --brand-red-100: #f5e7e6;
+  --brand-red-200: #ebcecc;
+  --brand-red-300: #d9a6a4;
+  --brand-red-400: #c77c7c;
+  --brand-red-500: #a9434c;
+  --brand-red-800: #390707;
+  --brand-red-900: #280404;
+  --brand-silk-image: url("/red-silk-texture.png");
+  --primary: var(--brand-primary);
   --primary-foreground: #ffffff;
-  --sidebar-primary: #d32f2f;
+  --sidebar-primary: var(--brand-primary);
   --sidebar-primary-foreground: #ffffff;
-  --chart-1: #d32f2f;
-  --chart-2: #c62828;
-  --chart-3: #b71c1c;
-  --chart-4: #ad1457;
-  --chart-5: #880e4f;
+  --chart-1: var(--brand-primary);
+  --chart-2: var(--brand-secondary);
+  --chart-3: #b56b67;
+  --chart-4: #c6a176;
+  --chart-5: #512c34;
   --radius: 0.5rem;
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --secondary: #1a1a1a;
+  --background: var(--brand-background);
+  --foreground: var(--brand-text-primary);
+  --card: var(--brand-background);
+  --card-foreground: var(--brand-text-primary);
+  --popover: var(--brand-background);
+  --popover-foreground: var(--brand-text-primary);
+  --secondary: var(--brand-secondary);
   --secondary-foreground: #ffffff;
-  --muted: #f5f5f5;
-  --muted-foreground: #666666;
-  --accent: #d32f2f;
+  --muted: var(--brand-section-background);
+  --muted-foreground: var(--brand-text-secondary);
+  --accent: var(--brand-accent);
   --accent-foreground: #ffffff;
-  --destructive: #d32f2f;
+  --destructive: var(--brand-primary);
   --destructive-foreground: #ffffff;
   --border: #e0e0e0;
-  --input: #ffffff;
-  --ring: #d32f2f;
-  --sidebar: #ffffff;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-accent: #d32f2f;
+  --input: var(--brand-background);
+  --ring: var(--brand-primary);
+  --sidebar: var(--brand-background);
+  --sidebar-foreground: var(--brand-text-primary);
+  --sidebar-accent: var(--brand-primary);
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #e0e0e0;
-  --sidebar-ring: #d32f2f;
+  --sidebar-ring: var(--brand-primary);
 }
 
 .dark {
@@ -88,11 +124,11 @@
     @apply border-border outline-ring/50;
   }
   html {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
   body {
     @apply text-foreground;
-    background: #ffffff;
+    background: var(--brand-background);
     min-height: 100vh;
   }
   button:not(:disabled),
@@ -136,13 +172,19 @@
   }
 
   /* Typography */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
     font-weight: 700;
   }
 
-  p, body {
-    font-family: 'Poppins', sans-serif;
+  p,
+  body {
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
   }
 
@@ -154,19 +196,31 @@
   }
 
   /* Smooth transitions */
-  button, a, [role="button"] {
+  button,
+  a,
+  [role="button"] {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Bold red accent text */
+  /* Brand accent text */
   .gradient-text {
-    color: #d32f2f;
+    color: var(--brand-primary);
     font-weight: 700;
   }
 
-  /* Red divider */
+  /* Reusable red silk treatment, reserved for key brand moments. */
+  .brand-silk {
+    background-color: var(--brand-primary);
+    background-image:
+      linear-gradient(108deg, rgba(43, 0, 8, 0.34), rgba(69, 4, 15, 0.18)),
+      var(--brand-silk-image);
+    background-position: 34% center;
+    background-size: cover;
+  }
+
+  /* Brand divider */
   .red-divider {
-    background: #d32f2f;
+    background: var(--brand-primary);
     height: 4px;
     margin: 2rem 0;
   }
@@ -197,7 +251,9 @@
     h3 {
       @apply text-lg;
     }
-    p, span, div {
+    p,
+    span,
+    div {
       @apply text-sm;
     }
   }

@@ -3,7 +3,6 @@ import { Card } from "@/components/ui/card";
 import { ChevronRight, MapPin, Phone, Mail, Star, Calendar, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { BookingModal } from "@/components/BookingModal";
-import { SparklesText } from "@/components/SparklesText";
 
 /**
  * Her World Studio - Women Empowerment Design
@@ -161,8 +160,13 @@ export default function Home() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white border-b-4 border-red-600 shadow-md">
         <div className="container py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold flex items-center gap-2" style={{ justifyContent: 'center' }}> {/* make the text symmertrical horizontolly */}
-            <SparklesText text="Her World Studio" className="text-2xl" sparklesCount={6} colors={{ first: "#640606", second: "#FFFFFF" }} />
+          <div className="flex flex-col items-start leading-none">
+            <span className="text-2xl font-semibold tracking-wide text-gray-900">
+              Her World
+            </span>
+            <span className="ml-1 mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.32em] text-brand-secondary">
+              Studio H
+            </span>
           </div>
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center">
@@ -231,8 +235,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="text-white py-20 md:py-32 relative overflow-hidden" style={{backgroundColor: '#640606'}}>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-red-700 rounded-full -mr-48 -mt-48 opacity-50" />
+      <section className="brand-silk text-white py-20 md:py-32 relative overflow-hidden">
         <div className="container grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight" style={{ fontSize: '40px', marginLeft: '10px' }}>
@@ -506,7 +509,7 @@ export default function Home() {
       </section>
 
       {/* Booking CTA */}
-      <section className="py-20 md:py-32 text-white" style={{ backgroundColor: '#640606' }}>
+      <section className="brand-silk py-20 md:py-32 text-white">
         <div className="container max-w-2xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Book?</h2>
           <p className="text-lg text-red-50 mb-8">
