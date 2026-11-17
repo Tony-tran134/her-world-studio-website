@@ -24,6 +24,8 @@ const sections = [
 ] as const;
 
 type DashboardSection = (typeof sections)[number]["id"];
+import { LogOut, Menu, X, BarChart3, Calendar, Briefcase, Eye } from "lucide-react";
+import { useLocation } from "wouter";
 
 export default function Dashboard() {
   const [, navigate] = useLocation();
